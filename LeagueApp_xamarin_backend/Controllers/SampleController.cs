@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
-namespace YourProjectNamespace.Controllers
+namespace LeagueApp_xamarin_backend.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
