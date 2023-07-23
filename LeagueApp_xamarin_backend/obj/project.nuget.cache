@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "PHyLRTw25Fj4mnRSNGA7OHrX6XW6N3qBzUXfXU9IDBGeq66Cae+nblEInljqo3reMhoX5QD9eoRbb/66zbfvWw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Troy Kopec\\OneDrive - The University of Tampa\\Desktop\\LeagueApp_xamarin_backend\\LeagueApp_xamarin_backend\\LeagueApp_xamarin_backend.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Troy Kopec\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.9\\microsoft.aspnetcore.openapi.7.0.9.nupkg.sha512",
+    "C:\\Users\\Troy Kopec\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\Troy Kopec\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
+    "C:\\Users\\Troy Kopec\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
+    "C:\\Users\\Troy Kopec\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
+    "C:\\Users\\Troy Kopec\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
+    "C:\\Users\\Troy Kopec\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.5.0\\swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}
