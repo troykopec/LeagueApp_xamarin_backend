@@ -23,7 +23,7 @@ jobs:
           include-prerelease: true
 
       - name: Build with dotnet
-        run: dotnet build --configuration Release --project LeagueApp_xamarin_backend
+        run: dotnet build --configuration Release LeagueApp_xamarin_backend/LeagueApp_xamarin_backend.csproj
 
       - name: dotnet publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
