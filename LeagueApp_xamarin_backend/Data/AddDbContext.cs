@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
-using eZ_Leagues.Models;
+using LeagueApp_xamarin_backend.Models;
 
-namespace eZ_Leagues.Data
+namespace LeagueApp_xamarin_backend.Data
 {
     public class AppDbContext : DbContext
     {
