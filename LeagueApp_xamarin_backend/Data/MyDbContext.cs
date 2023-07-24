@@ -14,5 +14,13 @@ namespace LeagueApp_xamarin_backend.Data
 
         public DbSet<Item> Items { get; set; }
         // Add other DbSets for other entities as needed
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // Specify the unique constraint for the Description property
+            modelBuilder.Entity<Item>()
+                .HasIndex(i => i.Description)
+                .IsUnique();
+        }
+    
     }
 }
