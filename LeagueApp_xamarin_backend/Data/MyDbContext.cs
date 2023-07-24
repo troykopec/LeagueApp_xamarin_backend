@@ -6,9 +6,9 @@ using LeagueApp_xamarin_backend.Models;
 
 namespace LeagueApp_xamarin_backend.Data
 {
-    public class AppDbContext : DbContext
+    public class MyDbContext : DbContext
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+        public MyDbContext(DbContextOptions<MyDbContext> options) : base(options)
         {
         }
 
