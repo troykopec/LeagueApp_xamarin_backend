@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\LeagueApp_xamarin_backend.props" />
+</Project>
