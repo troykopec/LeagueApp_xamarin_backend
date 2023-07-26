@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using LeagueApp_xamarin_backend.Models; // Import the Item model from the Models folder
-using LeagueApp_xamarin_backend.DataAccess;
 
 namespace LeagueApp_xamarin_backend.Controllers
 {
@@ -9,25 +8,30 @@ namespace LeagueApp_xamarin_backend.Controllers
     [Route("api/[controller]")]
     public class SampleController : ControllerBase
     {
-        private readonly MyDataAccess dataAccess; // Use List<Item> instead of List<string>
+        private readonly List<Item> _data; // Use List<Item> instead of List<string>
 
-        public SampleController(MyDataAccess dataAccess)
+        public SampleController()
         {
-            this.dataAccess = dataAccess;
+            // Sample data for demonstration purposes
+            _data = new List<Item>
+            {
+                new Item { Id = "1", Text = "Item 1", Description = "Description for Item 1" },
+                new Item { Id = "2", Text = "Item 2", Description = "Description for Item 2" },
+                new Item { Id = "3", Text = "Item 3", Description = "Description for Item 3" }
+            };
         }
 
-        // GET: api/sample
         [HttpGet]
-        public ActionResult<IEnumerable<Item>> GetItems()
+        public IActionResult Get()
         {
-            var items = dataAccess.GetItems(); // Call the GetItems method from your DataAccessClass
+            return Ok(_data); // Return the list of Item objects
+        }
 
-            if (items != null)
-            {
-                return Ok(items);
-            }
-
-            return NotFound();
+        [HttpPost]
+        public IActionResult Post([FromBody] string item)
+        {
+            _data.Add(new Item { Id = _data.Count.ToString(), Text = item, Description = "Description for " + item }); // Add a new Item object
+            return Ok();
         }
     }
 }
