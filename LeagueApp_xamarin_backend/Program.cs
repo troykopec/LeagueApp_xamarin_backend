@@ -21,11 +21,18 @@ builder.Services.AddApplicationInsightsTelemetry(options =>
     options.ConnectionString = "InstrumentationKey=6bd4a237-69f0-4032-b032-6b8c45b44bc0";
 });
 
+
+
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+// Add a logger to log the start of the application
+var logger = app.Services.GetRequiredService<ILogger<Program>>();
+logger.LogInformation("Application started.");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
