@@ -4,12 +4,16 @@ using System.Text;
 using Microsoft.EntityFrameworkCore;
 using LeagueApp_xamarin_backend.Models;
 
+using Microsoft.Extensions.Logging;
+
 namespace LeagueApp_xamarin_backend.Data
 {
     public class MyDbContext : DbContext
     {
-        public MyDbContext(DbContextOptions<MyDbContext> options) : base(options)
+        private readonly ILogger<MyDbContext> _logger;
+        public MyDbContext(DbContextOptions<MyDbContext> options, ILogger<MyDbContext> logger) : base(options)
         {
+            _logger = logger;
         }
 
         public DbSet<Item> Items { get; set; }
@@ -24,6 +28,7 @@ namespace LeagueApp_xamarin_backend.Data
 
         public List<Item> GetItems()
         {
+            _logger.LogInformation("In GetItems()");
             return Items.ToList();
         }
 
