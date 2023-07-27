@@ -21,6 +21,11 @@ namespace LeagueApp_xamarin_backend.Data
                 .HasIndex(i => i.Description)
                 .IsUnique();
         }
-    
+
+        public List<Item> GetItems()
+        {
+            return Items.ToList();
+        }
+
     }
 }
