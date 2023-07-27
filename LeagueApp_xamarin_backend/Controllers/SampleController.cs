@@ -1,8 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using LeagueApp_xamarin_backend.Models; // Import the Item model from the Models folder
-using LeagueApp_xamarin_backend.Data;
-using Microsoft.Extensions.Logging;
 
 namespace LeagueApp_xamarin_backend.Controllers
 {
@@ -11,28 +9,22 @@ namespace LeagueApp_xamarin_backend.Controllers
     public class SampleController : ControllerBase
     {
         private readonly List<Item> _data; // Use List<Item> instead of List<string>
-        
-        private readonly MyDbContext _dbContext;
-        private readonly ILogger<SampleController> _logger;
 
-        public SampleController(MyDbContext dbContext, ILogger<SampleController> logger)
+        public SampleController()
         {
-            _dbContext = dbContext;
-            _logger = logger;
+            // Sample data for demonstration purposes
+            _data = new List<Item>
+            {
+                new Item { Id = "1", Text = "Item 1", Description = "Description for Item 1" },
+                new Item { Id = "2", Text = "Item 2", Description = "Description for Item 2" },
+                new Item { Id = "3", Text = "Item 3", Description = "Description for Item 3" }
+            };
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Item>> GetItems()
+        public IActionResult Get()
         {
-            var items = _dbContext.GetItems(); // Call the GetItems method from your MyDbContext
-            _logger.LogInformation("in GetItems()");
-            
-            if (items != null)
-            {
-                return Ok(items);
-            }
-
-            return NotFound();
+            return Ok(_data); // Return the list of Item objects
         }
 
         [HttpPost]
