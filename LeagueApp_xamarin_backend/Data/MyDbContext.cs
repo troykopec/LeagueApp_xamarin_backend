@@ -17,12 +17,28 @@ namespace LeagueApp_xamarin_backend.Data
         }
 
         public DbSet<Item> Items { get; set; }
+        public DbSet<User> Users { get; set; }
+
         // Add other DbSets for other entities as needed
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Specify the unique constraint for the Description property
             modelBuilder.Entity<Item>()
                 .HasIndex(i => i.Description)
+                .IsUnique();
+                        // Specify the unique constraint for the Username property
+            modelBuilder.Entity<User>()
+                .HasIndex(u => u.Username)
+                .IsUnique();
+
+            // Specify the unique constraint for the Email property
+            modelBuilder.Entity<User>()
+                .HasIndex(u => u.Email)
+                .IsUnique();
+
+            // Specify the unique constraint for the PhoneNumber property
+            modelBuilder.Entity<User>()
+                .HasIndex(u => u.PhoneNumber)
                 .IsUnique();
         }
 
