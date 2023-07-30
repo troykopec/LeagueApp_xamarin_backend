@@ -22,7 +22,7 @@ namespace LeagueApp_xamarin_backend.Migrations
                 .HasAnnotation("ProductVersion", "7.0.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+            
 
             modelBuilder.Entity("LeagueApp_xamarin_backend.Models.Item", b =>
                 {
@@ -30,7 +30,7 @@ namespace LeagueApp_xamarin_backend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    
 
                     b.Property<string>("Description")
                         .IsRequired()

@@ -38,7 +38,7 @@ namespace LeagueApp_xamarin_backend.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] string item)
         {
-            _data.Add(new Item { Id = _data.Count.ToString(), Text = item, Description = "Description for " + item }); // Add a new Item object
+            _data.Add(new Item { Id = _data.Count, Text = item, Description = "Description for " + item }); // Add a new Item object
             return Ok();
         }
     }

@@ -7,7 +7,7 @@ namespace LeagueApp_xamarin_backend.Models
     public class Item
     {
         [Key]
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         [MaxLength(50)] // Set the maximum length to 50 characters
         public string Text { get; set; }

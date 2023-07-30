@@ -10,27 +10,49 @@ namespace LeagueApp_xamarin_backend.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<int>(
+            migrationBuilder.DropPrimaryKey(
+                name: "PK_Items",
+                table: "Items");
+                
+            migrationBuilder.DropColumn(
+            name: "Id",
+            table: "Items");
+
+            migrationBuilder.AddColumn<int>(
                 name: "Id",
                 table: "Items",
                 type: "int",
-                nullable: false,
-                oldClrType: typeof(string),
-                oldType: "nvarchar(450)")
+                nullable: false)
                 .Annotation("SqlServer:Identity", "1, 1");
+
+            migrationBuilder.AddPrimaryKey(
+                name: "PK_Items",
+                table: "Items",
+                column: "Id");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<string>(
+            migrationBuilder.DropPrimaryKey(
+                name: "PK_Items",
+                table: "Items");
+
+            migrationBuilder.DropColumn(
+                name: "Id",
+                table: "Items");
+
+            migrationBuilder.AddColumn<string>(
                 name: "Id",
                 table: "Items",
                 type: "nvarchar(450)",
-                nullable: false,
-                oldClrType: typeof(int),
-                oldType: "int")
-                .OldAnnotation("SqlServer:Identity", "1, 1");
+                nullable: false)
+                .Annotation("SqlServer:Identity", "1, 1");
+
+            migrationBuilder.AddPrimaryKey(
+                name: "PK_Items",
+                table: "Items",
+                column: "Id");
         }
     }
 }
