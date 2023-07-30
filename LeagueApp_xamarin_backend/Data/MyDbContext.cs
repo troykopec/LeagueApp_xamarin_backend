@@ -28,7 +28,6 @@ namespace LeagueApp_xamarin_backend.Data
 
         public List<Item> GetItems()
         {
-            _logger.LogInformation("In GetItems()");
             return Items.ToList();
         }
 
