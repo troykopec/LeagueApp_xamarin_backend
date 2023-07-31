@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using LeagueApp_xamarin_backend.Models;
 using LeagueApp_xamarin_backend.Data;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json; // Add this using statement
 
 namespace LeagueApp_xamarin_backend.Controllers
 {
@@ -24,9 +25,16 @@ namespace LeagueApp_xamarin_backend.Controllers
         public IActionResult Signup([FromBody] User user)
         {
             
-            if (!(user == null))
+            if (!string.IsNullOrEmpty(user.Username))
             {
-                return BadRequest("User data is not null.");
+                string userJson = JsonConvert.SerializeObject(user);
+                _logger.LogError($"Username should not be provided during signup. User: {userJson}");
+                return BadRequest($"Username should not be provided during signup. User: {userJson}");
+            }
+
+            if (user == null)
+            {
+                return BadRequest("User data is null.");
             }
 
             // Set the CreatedAt and UpdatedAt properties to the current datetime
