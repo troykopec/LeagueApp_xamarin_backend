@@ -35,6 +35,14 @@ namespace LeagueApp_xamarin_backend.Data
             modelBuilder.Entity<User>()
                 .HasIndex(u => u.Email)
                 .IsUnique();
+                
+            modelBuilder.Entity<User>()
+                .Property(u => u.CreatedAt)
+                .HasColumnType("datetime");
+
+            modelBuilder.Entity<User>()
+                .Property(u => u.UpdatedAt)
+                .HasColumnType("datetime");
         }
 
         public List<Item> GetItems()
