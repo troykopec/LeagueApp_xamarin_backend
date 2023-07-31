@@ -25,6 +25,9 @@ namespace LeagueApp_xamarin_backend.Controllers
         public IActionResult Signup([FromBody] User user)
         {
             
+            user.CreatedAt = DateTime.Now;
+            user.UpdatedAt = DateTime.Now;
+            
             // Call the SignupUser method in the ApplicationDbContext to save the user data
             _context.SignupUser(user);
 
