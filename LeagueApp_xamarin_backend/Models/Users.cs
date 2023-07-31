@@ -17,7 +17,7 @@ namespace LeagueApp_xamarin_backend.Models
         public string FirstName { get; set; }
         [MaxLength(100)] // Set the maximum length to 50 characters
         public string LastName { get; set; }
-        public DateTime DateOfBirth { get; set; }
+        
         [MaxLength(15)] // Set the maximum length for phone number (you can adjust it as needed)
         public string PhoneNumber { get; set; }
         public DateTime CreatedAt { get; set; }

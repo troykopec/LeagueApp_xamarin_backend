@@ -35,16 +35,17 @@ namespace LeagueApp_xamarin_backend.Data
             modelBuilder.Entity<User>()
                 .HasIndex(u => u.Email)
                 .IsUnique();
-
-            // Specify the unique constraint for the PhoneNumber property
-            modelBuilder.Entity<User>()
-                .HasIndex(u => u.PhoneNumber)
-                .IsUnique();
         }
 
         public List<Item> GetItems()
         {
             return Items.ToList();
+        }
+
+        public void SignupUser(User user)
+        {
+            Users.Add(user);
+            SaveChanges();
         }
 
     }
