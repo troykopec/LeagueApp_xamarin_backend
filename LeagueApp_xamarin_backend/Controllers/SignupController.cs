@@ -23,13 +23,21 @@ namespace LeagueApp_xamarin_backend.Controllers
         [HttpPost]
         public IActionResult Signup([FromBody] User user)
         {
+                // Additional check: If the username is not null or empty, return BadRequest
+            if (!string.IsNullOrEmpty(user.Username))
+            {
+                _logger.LogError("Username should not be provided during signup.");
+                return BadRequest("Username should not be provided during signup.");
+            }
+            
             if (user == null)
             {
                 return BadRequest("User data is null.");
             }
 
             // Set the CreatedAt and UpdatedAt properties to the current datetime
-            
+            user.CreatedAt = DateTime.Now;
+            user.UpdatedAt = DateTime.Now;
 
             // Call the SignupUser method in the ApplicationDbContext to save the user data
             _context.SignupUser(user);
