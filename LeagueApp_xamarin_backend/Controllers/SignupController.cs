@@ -29,8 +29,7 @@ namespace LeagueApp_xamarin_backend.Controllers
             }
 
             // Set the CreatedAt and UpdatedAt properties to the current datetime
-            user.CreatedAt = DateTime.Now;
-            user.UpdatedAt = DateTime.Now;
+            
 
             // Call the SignupUser method in the ApplicationDbContext to save the user data
             _context.SignupUser(user);
