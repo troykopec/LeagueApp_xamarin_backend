@@ -30,9 +30,16 @@ namespace LeagueApp_xamarin_backend.Controllers
             
             // Call the SignupUser method in the ApplicationDbContext to save the user data
             _context.SignupUser(user);
-
+            
+            // Return a JSON object with a "message" property
+            var response = new ApiResponse
+            {
+                Message = "Signup successful."
+            };
             // Return a success response
-            return Ok("Signup successful.");
+            return Ok(response);
+
+            
         }
     }
 }
