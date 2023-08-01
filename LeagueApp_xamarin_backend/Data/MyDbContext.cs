@@ -55,6 +55,16 @@ namespace LeagueApp_xamarin_backend.Data
             Users.Add(user);
             SaveChanges();
         }
+        
+        public bool IsEmailTaken(string email)
+        {
+            return Users.Any(u => u.Email == email);
+        }
+
+        public bool IsUsernameTaken(string username)
+        {
+            return Users.Any(u => u.Username == username);
+        }
 
     }
 }

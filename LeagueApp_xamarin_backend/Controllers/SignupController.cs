@@ -24,6 +24,27 @@ namespace LeagueApp_xamarin_backend.Controllers
         [HttpPost]
         public IActionResult Signup([FromBody] User user)
         {
+            var response = new ApiResponse();
+            var messages = new List<string>();
+
+            // Check if the email is already taken
+            if (_context.IsEmailTaken(user.Email))
+            {
+                messages.Add("Email taken");
+            }
+
+            // Check if the username is already taken
+            if (_context.IsUsernameTaken(user.Username))
+            {
+                messages.Add("Username taken");
+            }
+
+            if (messages.Count > 0)
+            {
+                response.Message = string.Join(", ", messages);
+                return Ok(response);
+            }
+
             
             user.CreatedAt = DateTime.Now;
             user.UpdatedAt = DateTime.Now;
@@ -32,10 +53,8 @@ namespace LeagueApp_xamarin_backend.Controllers
             _context.SignupUser(user);
             
             // Return a JSON object with a "message" property
-            var response = new ApiResponse
-            {
-                Message = "Signup successful."
-            };
+            
+            response.Message = "Signup successful.";
             // Return a success response
             return Ok(response);
 
