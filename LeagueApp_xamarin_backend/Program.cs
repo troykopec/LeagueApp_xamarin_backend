@@ -32,7 +32,7 @@ builder.Services.AddAuthentication(options =>
 })
 .AddJwtBearer(options =>
 {
-    var secretKey = "temp_key"; // Replace with your secret key
+    var secretKey = "ThisIsMySecret_TEMP_KeyForHS256Algorithm_12345"; // Replace with your secret key
     var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
 
     options.RequireHttpsMetadata = false;
