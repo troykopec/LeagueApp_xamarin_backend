@@ -18,6 +18,6 @@ public class AuthenticateUser : ControllerBase
         
         // Additional logic to fetch user data, etc.
 
-        return Ok("Authenticated user data");
+        return Ok("Successfully Authenticated on Backend");
     }
 }
