@@ -5,7 +5,7 @@ using System.IdentityModel.Tokens.Jwt;
 
 [ApiController]
 [Route("api/[controller]")]
-public class MyController : ControllerBase
+public class AuthenticateUser : ControllerBase
 {
     // Example endpoint that requires authentication
     [HttpGet]
