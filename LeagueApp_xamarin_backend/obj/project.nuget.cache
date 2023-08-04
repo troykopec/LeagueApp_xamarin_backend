@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "QsT46/O+9oQptdWHzEzKVMDWi8YjSf4H4NpAlNhO+ykc6RQlvFhVxKAmn24vbViLPeWek6FSRJj2YVBpzqbY9A==",
+  "dgSpecHash": "bNhjYW8q588qcvkuFfUPUAsad7EMVnV4RvGg5f55ILe119V5JeyYoBqAzRIgi1PbWc6q75LfjtQwTuSnq8jCXg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Troy Kopec\\OneDrive - The University of Tampa\\Desktop\\LeagueApp_xamarin_backend\\LeagueApp_xamarin_backend\\LeagueApp_xamarin_backend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Troy Kopec\\.nuget\\packages\\azure.core\\1.32.0\\azure.core.1.32.0.nupkg.sha512",
     "C:\\Users\\Troy Kopec\\.nuget\\packages\\azure.identity\\1.9.0\\azure.identity.1.9.0.nupkg.sha512",
     "C:\\Users\\Troy Kopec\\.nuget\\packages\\azure.security.keyvault.secrets\\4.5.0\\azure.security.keyvault.secrets.4.5.0.nupkg.sha512",
+    "C:\\Users\\Troy Kopec\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\Troy Kopec\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Troy Kopec\\.nuget\\packages\\microsoft.applicationinsights\\2.21.0\\microsoft.applicationinsights.2.21.0.nupkg.sha512",
     "C:\\Users\\Troy Kopec\\.nuget\\packages\\microsoft.applicationinsights.aspnetcore\\2.21.0\\microsoft.applicationinsights.aspnetcore.2.21.0.nupkg.sha512",

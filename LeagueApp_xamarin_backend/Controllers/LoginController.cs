@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using LeagueApp_xamarin_backend.Data;
 using LeagueApp_xamarin_backend.Models;
 using Microsoft.EntityFrameworkCore;
+using BCrypt.Net;
+
 
 namespace LeagueApp_xamarin_backend.Controllers
 {
@@ -28,17 +30,15 @@ namespace LeagueApp_xamarin_backend.Controllers
         [HttpPost]
         public async Task<IActionResult> Login([FromBody] LoginModel model)
         {
-            // Validate the user's credentials (username/email and password)
+            // Find the user by username or email
             var user = await _context.Users.SingleOrDefaultAsync(u =>
-                (u.Username == model.UsernameOrEmail || u.Email == model.UsernameOrEmail) &&
-                u.Password == model.Password);
+                (u.Username == model.UsernameOrEmail || u.Email == model.UsernameOrEmail));
 
             // If user not found or invalid credentials, return unauthorized status
-            if (user == null)
+            if (user == null || !BCrypt.Net.BCrypt.Verify(model.Password, user.Password))
             {
                 return Unauthorized();
             }
-
             // Generate a JWT token for the authenticated user
             var token = GenerateJwtToken(user);
 
