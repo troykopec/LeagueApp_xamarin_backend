@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using System.IdentityModel.Tokens.Jwt;
+using Newtonsoft.Json;
 
 namespace LeagueApp_xamarin_backend.Controllers
 {
@@ -59,14 +60,14 @@ namespace LeagueApp_xamarin_backend.Controllers
                     // Add the new league to the database
                     _context.CreateLeague(newLeague);
                     // ...
+                    response.Message = $"League Creation Successful. League Details: {JsonConvert.SerializeObject(newLeague)}";                // Return a success response
+
                 }
                 else
                 {
                     // Handle the case where userIdString is not a valid integer
                 }
 
-                response.Message = "League Creation Successful.";
-                // Return a success response
                 return Ok(response);
             }
             catch (Exception ex)
