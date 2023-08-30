@@ -67,6 +67,12 @@ namespace LeagueApp_xamarin_backend.Data
                 .WithMany()
                 .HasForeignKey(team => team.TeamLeaderId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<League>()
+                .HasOne<User>() // Replace 'User' with your actual user entity type
+                .WithMany()     // Depending on your relationship, you might need to specify the navigation property in WithMany()
+                .HasForeignKey(league => league.OrganizerId)
+                .OnDelete(DeleteBehavior.Restrict); // Or other DeleteBehavior as needed
             
         }
 

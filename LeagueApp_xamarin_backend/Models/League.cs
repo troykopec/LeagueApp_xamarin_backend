@@ -26,7 +26,8 @@ namespace LeagueApp_xamarin_backend.Models
         public decimal RegistrationFee { get; set; }
         public int MaxTeamCapacity { get; set; }
         public int MaxTeams{ get; set; }
-        public User Organizer { get; set; }
+        //public User Organizer { get; set; }
+        public string OrganizerId { get; set; }
         public List<Team> Teams { get; set; }
 
         // Base constructor

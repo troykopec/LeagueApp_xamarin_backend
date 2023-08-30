@@ -4,6 +4,9 @@ using System.Threading.Tasks;
 using LeagueApp_xamarin_backend.Data;
 using LeagueApp_xamarin_backend.Models;
 using Microsoft.Extensions.Logging;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace LeagueApp_xamarin_backend.Controllers
 {
@@ -21,6 +24,7 @@ namespace LeagueApp_xamarin_backend.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> CreateLeague([FromBody] League model)
         {
             try
@@ -31,6 +35,8 @@ namespace LeagueApp_xamarin_backend.Controllers
                 }
                 var response = new ApiResponse();
 
+                var userId = User.FindFirstValue(JwtRegisteredClaimNames.Sub);
+                var username = User.FindFirstValue(JwtRegisteredClaimNames.UniqueName);
 
                 // Create a new League object based on the input model
                 var newLeague = new League
@@ -44,7 +50,8 @@ namespace LeagueApp_xamarin_backend.Controllers
                     StartDate = model.StartDate,
                     EndDate = model.EndDate,
                     RegistrationStartDate = model.RegistrationStartDate,
-                    RegistrationEndDate = model.RegistrationEndDate
+                    RegistrationEndDate = model.RegistrationEndDate,
+                    OrganizerId = userId,
                 };
 
                 // Add the new league to the database
