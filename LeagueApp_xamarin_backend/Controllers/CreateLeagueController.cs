@@ -36,38 +36,28 @@ namespace LeagueApp_xamarin_backend.Controllers
                 }
                 var response = new ApiResponse();
 
-                var userIdString = User.FindFirstValue(JwtRegisteredClaimNames.Sub);
-                var username = User.FindFirstValue(JwtRegisteredClaimNames.UniqueName);
+                var userId = int.Parse(User.FindFirstValue(JwtRegisteredClaimNames.Sub)); // Parse directly to int
 
-                // Create a new League object based on the input model
-                if (int.TryParse(userIdString, out int userId))
-                {
+                
                     // Create a new League object based on the input model
-                    var newLeague = new League
-                    {
-                        LeagueName = model.LeagueName,
-                        Description = model.Description,
-                        SportType = model.SportType,
-                        RegistrationFee = model.RegistrationFee,
-                        MaxTeamCapacity = model.MaxTeamCapacity,
-                        MaxTeams = model.MaxTeams,
-                        StartDate = model.StartDate,
-                        EndDate = model.EndDate,
-                        RegistrationStartDate = model.RegistrationStartDate,
-                        RegistrationEndDate = model.RegistrationEndDate,
-                        OrganizerId = userId,
-                    };
-                    // Add the new league to the database
-                    _context.CreateLeague(newLeague);
-                    // ...
-                    response.Message = $"League Creation Successful. League Details: {JsonConvert.SerializeObject(newLeague)}";                // Return a success response
-
-                }
-                else
+                var newLeague = new League
                 {
-                    // Handle the case where userIdString is not a valid integer
-                }
-
+                    LeagueName = model.LeagueName,
+                    Description = model.Description,
+                    SportType = model.SportType,
+                    RegistrationFee = model.RegistrationFee,
+                    MaxTeamCapacity = model.MaxTeamCapacity,
+                    MaxTeams = model.MaxTeams,
+                    StartDate = model.StartDate,
+                    EndDate = model.EndDate,
+                    RegistrationStartDate = model.RegistrationStartDate,
+                    RegistrationEndDate = model.RegistrationEndDate,
+                    OrganizerId = userId,
+                };
+                // Add the new league to the database
+                _context.CreateLeague(newLeague);
+                // ...
+                response.Message = "League Creation Successful.";    // Return a success response
                 return Ok(response);
             }
             catch (Exception ex)
