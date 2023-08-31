@@ -17,6 +17,6 @@ public class AuthenticateUser : ControllerBase
         var username = User.FindFirstValue(JwtRegisteredClaimNames.UniqueName);
         
         // Additional logic to fetch user data, etc.
-        return Ok("Successfully Authenticated on Backend");
+        return Ok($"Successfully Authenticated on Backend. id: {userId}");
     }
 }
