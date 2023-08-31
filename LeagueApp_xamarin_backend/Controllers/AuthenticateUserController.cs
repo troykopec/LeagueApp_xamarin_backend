@@ -15,8 +15,12 @@ public class AuthenticateUser : ControllerBase
         // Access the user's claims
         var userId = User.FindFirstValue(JwtRegisteredClaimNames.Sub);
         var username = User.FindFirstValue(JwtRegisteredClaimNames.UniqueName);
-        
+        var claims = User.Claims.Select(c => new { c.Type, c.Value });
+
         // Additional logic to fetch user data, etc.
-        return Ok($"Successfully Authenticated on Backend. id: {userId}");
-    }
+        return Ok(new
+        {
+            Message = $"Successfully Authenticated on Backend. id: {userId}",
+            Claims = claims
+        });    }
 }
