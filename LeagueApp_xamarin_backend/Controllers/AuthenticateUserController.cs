@@ -13,8 +13,8 @@ public class AuthenticateUser : ControllerBase
     public IActionResult GetAuthenticatedUserData()
     {
         // Access the user's claims
-        var userId = User.FindFirstValue(JwtRegisteredClaimNames.Sub);
-        var username = User.FindFirstValue(JwtRegisteredClaimNames.UniqueName);
+        var userId = User.FindFirstValue("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier");        
+        var username = User.FindFirstValue(JwtRegisteredClaimNames.Name);
         var claims = User.Claims.Select(c => new { c.Type, c.Value });
 
         // Additional logic to fetch user data, etc.
