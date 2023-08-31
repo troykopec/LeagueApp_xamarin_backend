@@ -36,7 +36,7 @@ namespace LeagueApp_xamarin_backend.Controllers
                 }
                 var response = new ApiResponse();
 
-                var userIdString = User.FindFirstValue(JwtRegisteredClaimNames.Sub);
+                var userIdString = User.FindFirstValue("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier");        
                 var username = User.FindFirstValue(JwtRegisteredClaimNames.UniqueName);
 
                 if (!string.IsNullOrEmpty(userIdString) && int.TryParse(userIdString, out int userId))
