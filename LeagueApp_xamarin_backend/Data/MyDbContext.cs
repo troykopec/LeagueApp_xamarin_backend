@@ -43,7 +43,13 @@ namespace LeagueApp_xamarin_backend.Data
             modelBuilder.Entity<User>()
                 .Property(u => u.UpdatedAt)
                 .HasColumnType("datetime");
-            
+
+            // Configure TPT for League and its derived classes
+            modelBuilder.Entity<League>().ToTable("Leagues"); // Base table
+            modelBuilder.Entity<SoccerLeague>().ToTable("SoccerLeagues"); // Soccer-specific table
+            modelBuilder.Entity<BasketballLeague>().ToTable("BasketballLeagues"); // Basketball-specific table
+            modelBuilder.Entity<NicheLeague>().ToTable("NicheLeagues"); // Niche-specific table
+                    
             modelBuilder.Entity<League>()
                 .Property(u => u.StartDate)
                 .HasColumnType("datetime");

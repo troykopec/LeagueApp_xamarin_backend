@@ -45,39 +45,49 @@ namespace LeagueApp_xamarin_backend.Models
     {
         // public int FieldSize { get; set; }
         // Other soccer-specific properties
-
+        public string SportType { get; } = "Soccer";
+        public int Goals { get; set; } // Scoring property for soccer
+        /*
         public List<SoccerGame> SoccerGames { get; set; }
 
         public SoccerLeague()
         {
             SoccerGames = new List<SoccerGame>();
         }
+        */
     }
 
     public class BasketballLeague : League
     {
         // public int CourtSize { get; set; }
         // Other basketball-specific properties
+        public string SportType { get; } = "Basketball";
+        public int Points { get; set; } // Scoring property for soccer
 
+        /*
         public List<BasketballGame> BasketballGames { get; set; }
 
         public BasketballLeague()
         {
             BasketballGames = new List<BasketballGame>();
         }
+        */
     }
 
     public class NicheLeague : League
     {
         // Other  Niche-specific properties
-
-        public List<NicheGame> NicheGames { get; set; }
+        public int NichePoints { get; set; } // Scoring property for soccer
+        
+        /*public List<NicheGame> NicheGames { get; set; }
 
         public NicheLeague()
         {
             NicheGames = new List<NicheGame>();
         }
+        */
     }
+/*
 
     public class Game
     {
@@ -109,4 +119,5 @@ namespace LeagueApp_xamarin_backend.Models
     {
         // Other basketball-specific game properties and methods
     }
+*/
 }
