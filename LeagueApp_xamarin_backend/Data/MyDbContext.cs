@@ -105,19 +105,14 @@ namespace LeagueApp_xamarin_backend.Data
             SaveChanges();
         }
 
-        public List<League> GetLeagues(int userId)
+        public List<string> GetLeagues(int userId)
         {
-            var league = Users
-                .Where(league => league.UserID == userId)
-                .Select(league => new League
-                {
-                    Id = league.UserID,
-                    LeagueName = league.FirstName,
-                    Description = league.LastName,
-                })
+            var leaguesAsString = Leagues
+                .Where(league => league.OrganizerId == userId)
+                .Select(league => $"{league.Id} - {league.LeagueName}: {league.Description}")
                 .ToList();
 
-            return league;
+            return leaguesAsString;
         }
 
         public bool IsUsernameTaken(string username)
