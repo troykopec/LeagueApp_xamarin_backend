@@ -103,19 +103,11 @@ namespace LeagueApp_xamarin_backend.Data
             SaveChanges();
         }
 
-        public IQueryable<LeagueDTO> GetLeagues(int userId)
+        public League GetLeagues(int userId)
         {
-            var leagueDTOs = Leagues
-                .Where(league => league.OrganizerId == userId)
-                .Select(league => new LeagueDTO
-                {
-                    Id = league.Id,
-                    LeagueName = league.LeagueName,
-                    Description = league.Description,
-                    // Map other properties as needed
-                });
+            var league = Leagues.FirstOrDefault(league => league.OrganizerId == userId);
 
-            return leagueDTOs;
+            return league;
         }
 
         public bool IsUsernameTaken(string username)
