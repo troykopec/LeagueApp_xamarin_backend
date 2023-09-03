@@ -109,12 +109,15 @@ namespace LeagueApp_xamarin_backend.Data
                 .Where(league => league.OrganizerId == userId)
                 .Select(league => new League
                 {
+                    
                     Id = league.Id,
                     LeagueName = league.LeagueName,
                     Description = league.Description,
                     // Map other properties as needed
+                    
                 })
                 .ToList();
+            return myLeague;
         }
 
         public bool IsUsernameTaken(string username)
