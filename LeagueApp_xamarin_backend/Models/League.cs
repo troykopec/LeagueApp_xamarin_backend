@@ -27,6 +27,7 @@ namespace LeagueApp_xamarin_backend.Models
         public int MaxTeamCapacity { get; set; }
         public int MaxTeams{ get; set; }
         //public User Organizer { get; set; }
+        [JsonIgnore]
         public int OrganizerId { get; set; }
         [JsonIgnore] // This property will be excluded from JSON serialization
         public List<Team> Teams { get; set; }
