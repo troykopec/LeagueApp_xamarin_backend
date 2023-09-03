@@ -30,11 +30,8 @@ public class MyLeaguesController : Controller
         {
             // Retrieve leagues where the user is the organizer
             var myLeagues = _dbContext.GetLeagues;
-            var settings = new JsonSerializerSettings
-            {
-                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-            };
-            var leagues_string = JsonConvert.SerializeObject(myLeagues, settings);
+
+            var leagues_string = JsonConvert.SerializeObject(myLeagues);
 
             response.Message = leagues_string;
         }
