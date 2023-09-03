@@ -105,8 +105,9 @@ namespace LeagueApp_xamarin_backend.Data
 
         public League GetLeagues(int userId)
         {
-            var league = Leagues.FirstOrDefault(league => league.OrganizerId == userId);
-
+            var league = Leagues
+                .Include(l => l.Id)
+                .FirstOrDefault(league => league.OrganizerId == userId);
             return league;
         }
 
