@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using LeagueApp_xamarin_backend.Models;
-
+using Newtonsoft.Json;
 using Microsoft.Extensions.Logging;
 
 namespace LeagueApp_xamarin_backend.Data
@@ -103,9 +103,9 @@ namespace LeagueApp_xamarin_backend.Data
             SaveChanges();
         }
 
-        public List<League> GetLeagues(int userId)
+        public String GetLeagues(int userId)
         {
-            var myLeague = Leagues
+            var myLeagues = Leagues
                 .Where(league => league.OrganizerId == userId)
                 .Select(league => new League
                 {
@@ -117,7 +117,8 @@ namespace LeagueApp_xamarin_backend.Data
                     
                 })
                 .ToList();
-            return myLeague;
+            var leagues_string = JsonConvert.SerializeObject(myLeagues);
+            return leagues_string;
         }
 
         public bool IsUsernameTaken(string username)
