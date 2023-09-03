@@ -30,8 +30,10 @@ public class MyLeaguesController : Controller
         {
             // Retrieve leagues where the user is the organizer
             var myLeagues = _dbContext.GetLeagues;
-
-            response.Message = "dumb as fuck";
+            List<League> leagues = myLeagues(userId);
+            
+            string idOfFirstLeague = leagues[0].LeagueName;
+            response.Message = idOfFirstLeague;
         }
         else
         {
