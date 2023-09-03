@@ -113,6 +113,7 @@ namespace LeagueApp_xamarin_backend.Data
                     Id = league.Id,
                     LeagueName = league.LeagueName,
                     Description = league.Description,
+                    SportType = league.SportType,
                     // Map other properties as needed
                     
                 })
