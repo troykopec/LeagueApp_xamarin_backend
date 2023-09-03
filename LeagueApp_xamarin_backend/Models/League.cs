@@ -1,8 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text.Json.Serialization;
-using System.Runtime.Serialization;
+
 
 namespace LeagueApp_xamarin_backend.Models
 {
@@ -29,8 +28,7 @@ namespace LeagueApp_xamarin_backend.Models
         public int MaxTeams{ get; set; }
         //public User Organizer { get; set; }
         public int OrganizerId { get; set; }
-        [JsonIgnore] // This property will be excluded from JSON serialization
-        [IgnoreDataMember]
+        
         public List<Team> Teams { get; set; }
 
         // Base constructor
