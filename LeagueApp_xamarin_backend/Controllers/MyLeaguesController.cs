@@ -29,9 +29,9 @@ public class MyLeaguesController : Controller
         if (!string.IsNullOrEmpty(userIdString) && int.TryParse(userIdString, out int userId))
         {
             // Retrieve leagues where the user is the organizer
-            var myLeagues = _dbContext.GetLeagues;
+            var myLeagues = _dbContext.GetLeagues(userId);
 
-            response.Message =  JsonConvert.SerializeObject(myLeagues(userId));
+            response.Message =  JsonConvert.SerializeObject(myLeagues);
         }
         else
         {
