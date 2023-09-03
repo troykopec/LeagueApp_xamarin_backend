@@ -107,13 +107,13 @@ namespace LeagueApp_xamarin_backend.Data
 
         public List<League> GetLeagues(int userId)
         {
-            var league = Leagues
-                .Where(league => league.OrganizerId == userId)
+            var league = Users
+                .Where(league => league.UserID == userId)
                 .Select(league => new League
                 {
-                    Id = league.Id,
-                    LeagueName = league.LeagueName,
-                    Description = league.Description
+                    Id = league.UserID,
+                    LeagueName = league.FirstName,
+                    Description = league.LastName,
                 })
                 .ToList();
 
