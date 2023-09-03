@@ -13,8 +13,6 @@ namespace LeagueApp_xamarin_backend.Models
         public string Id { get; set; }
         public string TeamName { get; set; }
         public int LeagueId { get; set; }
-        [JsonIgnore]
-        public League League { get; set; }
         public List<User> Players { get; set; }
         public User TeamLeader { get; set; }
         public int TeamLeaderId { get; set; }

@@ -63,11 +63,13 @@ namespace LeagueApp_xamarin_backend.Data
                 .Property(u => u.RegistrationEndDate)
                 .HasColumnType("datetime");
 
+            /*
             modelBuilder.Entity<Team>()
                 .HasOne(team => team.League)
                 .WithMany(league => league.Teams)
                 .HasForeignKey(team => team.LeagueId)
                 .OnDelete(DeleteBehavior.Cascade);
+            */
             modelBuilder.Entity<Team>()
                 .HasOne(team => team.TeamLeader)
                 .WithMany()
