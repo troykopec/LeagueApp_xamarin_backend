@@ -105,17 +105,17 @@ namespace LeagueApp_xamarin_backend.Data
             SaveChanges();
         }
 
-        public object GetLeagues(int userId)
+        public List<League> GetLeagues(int userId)
         {
             var league = Leagues
                 .Where(league => league.OrganizerId == userId)
-                .Select(league => new
+                .Select(league => new League
                 {
                     Id = league.Id,
                     LeagueName = league.LeagueName,
                     Description = league.Description
                 })
-                .FirstOrDefault();
+                .ToList();
 
             return league;
         }
