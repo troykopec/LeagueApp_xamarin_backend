@@ -103,11 +103,12 @@ namespace LeagueApp_xamarin_backend.Data
             SaveChanges();
         }
 
-        public String GetLeagues(int userId)
+        
+        public List<LeagueDTO> GetLeagues(int userId)
         {
-            var myLeagues = Leagues
+            var leagueDTOs = Leagues
                 .Where(league => league.OrganizerId == userId)
-                .Select(league => new League
+                .Select(league => new LeagueDTO
                 {
                     
                     Id = league.Id,
@@ -117,8 +118,8 @@ namespace LeagueApp_xamarin_backend.Data
                     
                 })
                 .ToList();
-            var leagues_string = JsonConvert.SerializeObject(myLeagues);
-            return leagues_string;
+            
+            return leagueDTOs;
         }
 
         public bool IsUsernameTaken(string username)

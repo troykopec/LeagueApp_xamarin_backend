@@ -10,7 +10,7 @@ using LeagueApp_xamarin_backend.Models;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Newtonsoft.Json;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -53,13 +53,6 @@ builder.Services.AddAuthentication(options =>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-// Configure the global JSON serializer settings to ignore reference loops
-JsonConvert.DefaultSettings = () => new JsonSerializerSettings
-    {
-        Formatting = Newtonsoft.Json.Formatting.Indented,
-        ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
-    };
 
 var app = builder.Build();
 
