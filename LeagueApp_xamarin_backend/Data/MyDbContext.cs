@@ -113,7 +113,8 @@ namespace LeagueApp_xamarin_backend.Data
                 {
                     Id = league.Id,
                     LeagueName = league.LeagueName,
-                    Description = league.Description
+                    Description = league.Description,
+                    SportType = league.SportType
                 })
                 .ToArray();
 
