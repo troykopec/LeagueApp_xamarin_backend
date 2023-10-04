@@ -62,14 +62,7 @@ namespace LeagueApp_xamarin_backend.Data
             modelBuilder.Entity<League>()
                 .Property(u => u.RegistrationEndDate)
                 .HasColumnType("datetime");
-
-            /*
-            modelBuilder.Entity<Team>()
-                .HasOne(team => team.League)
-                .WithMany(league => league.Teams)
-                .HasForeignKey(team => team.LeagueId)
-                .OnDelete(DeleteBehavior.Cascade);
-            */
+            
             modelBuilder.Entity<Team>()
                 .HasOne(team => team.TeamLeader)
                 .WithMany()
@@ -114,7 +107,8 @@ namespace LeagueApp_xamarin_backend.Data
                     Id = league.Id,
                     LeagueName = league.LeagueName,
                     Description = league.Description,
-                    SportType = league.SportType
+                    SportType = league.SportType,
+                    Teams =  league.Teams
                 })
                 .ToArray();
 

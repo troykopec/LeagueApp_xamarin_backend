@@ -68,7 +68,8 @@ namespace LeagueApp_xamarin_backend.Controllers
                 {
                     // Handle the case where userIdString is null or not a valid integer
                     response.Message = $"Error: Invalid user ID. id: {userIdString}";
-                }  // Return a success response
+                }  
+                // Return a success response
                 return Ok(response);
             }
             catch (Exception ex)

@@ -4,6 +4,7 @@ using LeagueApp_xamarin_backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LeagueApp_xamarin_backend.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231004002248_AddTeamsToLeagueRelationship")]
+    partial class AddTeamsToLeagueRelationship
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -108,6 +111,9 @@ namespace LeagueApp_xamarin_backend.Migrations
                     b.Property<int>("LeagueId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("LeagueId1")
+                        .HasColumnType("int");
+
                     b.Property<int>("TeamLeaderId")
                         .HasColumnType("int");
 
@@ -118,6 +124,8 @@ namespace LeagueApp_xamarin_backend.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("LeagueId");
+
+                    b.HasIndex("LeagueId1");
 
                     b.HasIndex("TeamLeaderId");
 
@@ -220,15 +228,19 @@ namespace LeagueApp_xamarin_backend.Migrations
             modelBuilder.Entity("LeagueApp_xamarin_backend.Models.Team", b =>
                 {
                     b.HasOne("LeagueApp_xamarin_backend.Models.League", null)
-                        .WithMany("Teams")
+                        .WithMany()
                         .HasForeignKey("LeagueId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("LeagueApp_xamarin_backend.Models.League", null)
+                        .WithMany("Teams")
+                        .HasForeignKey("LeagueId1");
+
                     b.HasOne("LeagueApp_xamarin_backend.Models.User", "TeamLeader")
                         .WithMany()
                         .HasForeignKey("TeamLeaderId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("TeamLeader");

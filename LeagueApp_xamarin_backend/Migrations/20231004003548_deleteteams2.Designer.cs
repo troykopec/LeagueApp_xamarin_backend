@@ -4,6 +4,7 @@ using LeagueApp_xamarin_backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LeagueApp_xamarin_backend.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231004003548_deleteteams2")]
+    partial class deleteteams2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -121,7 +124,7 @@ namespace LeagueApp_xamarin_backend.Migrations
 
                     b.HasIndex("TeamLeaderId");
 
-                    b.ToTable("Teams");
+                    b.ToTable("Team");
                 });
 
             modelBuilder.Entity("LeagueApp_xamarin_backend.Models.User", b =>
@@ -228,7 +231,7 @@ namespace LeagueApp_xamarin_backend.Migrations
                     b.HasOne("LeagueApp_xamarin_backend.Models.User", "TeamLeader")
                         .WithMany()
                         .HasForeignKey("TeamLeaderId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("TeamLeader");
