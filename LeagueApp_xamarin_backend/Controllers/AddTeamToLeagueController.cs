@@ -8,7 +8,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using System.IdentityModel.Tokens.Jwt;
 using Newtonsoft.Json;
-
+//
 namespace LeagueApp_xamarin_backend.Controllers
 {
     [ApiController]

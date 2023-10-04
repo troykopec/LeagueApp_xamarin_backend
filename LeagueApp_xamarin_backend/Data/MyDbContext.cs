@@ -98,6 +98,12 @@ namespace LeagueApp_xamarin_backend.Data
             SaveChanges();
         }
 
+        public void AddTeamToLeague(Team team)
+        {
+            Teams.Add(team);
+            SaveChanges();
+        }
+
         public League[] GetLeagues(int userId)
         {
             var leagues = Leagues
