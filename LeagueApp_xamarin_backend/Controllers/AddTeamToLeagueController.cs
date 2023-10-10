@@ -41,7 +41,7 @@ namespace LeagueApp_xamarin_backend.Controllers
                 var username = User.FindFirstValue(JwtRegisteredClaimNames.UniqueName);
 
                 if (!string.IsNullOrEmpty(userIdString) && int.TryParse(userIdString, out int userId))
-                {
+                {   /*
                     // Create a new League object based on the input model
                     var newTeam = new Team
                     {
@@ -56,7 +56,8 @@ namespace LeagueApp_xamarin_backend.Controllers
                     _context.AddTeamToLeague(newTeam);
 
                     // ...
-                    response.Message = $"team addition Successful. team Details: {JsonConvert.SerializeObject(newTeam)}";
+                    */
+                    response.Message = $"team addition Successful. team Details: {JsonConvert.SerializeObject(userIdString)}";
                 }
                 else
                 {
