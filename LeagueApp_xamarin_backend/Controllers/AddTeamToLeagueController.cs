@@ -29,19 +29,20 @@ namespace LeagueApp_xamarin_backend.Controllers
         public async Task<IActionResult> AddTeam([FromBody] Team model)
         {
             try
-            {
+            {   /*
                 if (!ModelState.IsValid)
                 {
                     var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage);
                     return BadRequest(new { Message = "Invalid model state", Errors = errors });
                 }
+                */
                 var response = new ApiResponse();
 
                 var userIdString = User.FindFirstValue("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier");        
                 var username = User.FindFirstValue(JwtRegisteredClaimNames.UniqueName);
-
+                /*
                 if (!string.IsNullOrEmpty(userIdString) && int.TryParse(userIdString, out int userId))
-                {   /*
+                {   
                     // Create a new League object based on the input model
                     var newTeam = new Team
                     {
@@ -56,7 +57,7 @@ namespace LeagueApp_xamarin_backend.Controllers
                     _context.AddTeamToLeague(newTeam);
 
                     // ...
-                    */
+                    
                     response.Message = $"team addition Successful. team Details: {JsonConvert.SerializeObject(userIdString)}";
                 }
                 else
@@ -64,18 +65,14 @@ namespace LeagueApp_xamarin_backend.Controllers
                     // Handle the case where userIdString is null or not a valid integer
                     response.Message = $"Error: Invalid user ID. id: {userIdString}";
                 }  
+                */
                 // Return a success response
+                response.Message = $"team addition Successful. team Details: {JsonConvert.SerializeObject(userIdString)}";
                 return Ok(response);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "An error occurred while creating a team.");
-                
-                // Log ModelState errors
-                var errors = ModelState.Values.SelectMany(v => v.Errors)
-                                            .Select(e => e.ErrorMessage);
-                _logger.LogError($"ModelState Errors: {string.Join(", ", errors)}");
-
                 return StatusCode(500, $"An error occurred while creating a team. Details: {ex.Message}");
             }
         }
