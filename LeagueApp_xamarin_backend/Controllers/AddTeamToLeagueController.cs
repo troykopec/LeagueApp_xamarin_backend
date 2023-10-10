@@ -32,7 +32,8 @@ namespace LeagueApp_xamarin_backend.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    return BadRequest(ModelState);
+                    var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage);
+                    return BadRequest(new { Message = "Invalid model state", Errors = errors });
                 }
                 var response = new ApiResponse();
 
@@ -49,6 +50,7 @@ namespace LeagueApp_xamarin_backend.Controllers
                         Players = model.Players,
                         TeamLeaderId = userId,
                     };
+                    
 
                     // Add the new team to the database
                     _context.AddTeamToLeague(newTeam);
