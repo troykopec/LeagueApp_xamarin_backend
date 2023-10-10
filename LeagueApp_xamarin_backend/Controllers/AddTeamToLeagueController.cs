@@ -26,7 +26,7 @@ namespace LeagueApp_xamarin_backend.Controllers
 
         [HttpPost]
         [Authorize]
-        public IActionResult AddTeam()
+        public IActionResult AddTeam([FromBody] Team model)
         {
             try
             {
@@ -37,7 +37,7 @@ namespace LeagueApp_xamarin_backend.Controllers
                 var username = User.FindFirstValue(JwtRegisteredClaimNames.UniqueName);
 
                 // Simplified response message
-                response.Message = "Add teams reached";
+                response.Message = $"team addition Successful. team Details: {JsonConvert.SerializeObject(model.TeamName)}";
 
                 // Return a success response
                 return Ok(response);
