@@ -4,6 +4,7 @@ using LeagueApp_xamarin_backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LeagueApp_xamarin_backend.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231010050912_Teams-Id-ToAutoSet")]
+    partial class TeamsIdToAutoSet
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,7 +47,7 @@ namespace LeagueApp_xamarin_backend.Migrations
                     b.HasIndex("Description")
                         .IsUnique();
 
-                    b.ToTable("Items", (string)null);
+                    b.ToTable("Items");
                 });
 
             modelBuilder.Entity("LeagueApp_xamarin_backend.Models.League", b =>
@@ -123,7 +126,7 @@ namespace LeagueApp_xamarin_backend.Migrations
 
                     b.HasIndex("TeamLeaderId");
 
-                    b.ToTable("Teams", (string)null);
+                    b.ToTable("Teams");
                 });
 
             modelBuilder.Entity("LeagueApp_xamarin_backend.Models.User", b =>
@@ -177,7 +180,7 @@ namespace LeagueApp_xamarin_backend.Migrations
                     b.HasIndex("Username")
                         .IsUnique();
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("LeagueApp_xamarin_backend.Models.BasketballLeague", b =>
