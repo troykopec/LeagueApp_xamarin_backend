@@ -10,6 +10,7 @@ namespace LeagueApp_xamarin_backend.Models
     public class Team
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string? TeamName { get; set; }
         public int LeagueId { get; set; }
