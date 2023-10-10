@@ -69,7 +69,13 @@ namespace LeagueApp_xamarin_backend.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "An error occurred while creating a team.");
-                return StatusCode(500, "An error occurred while creating a team.");
+                
+                // Log ModelState errors
+                var errors = ModelState.Values.SelectMany(v => v.Errors)
+                                            .Select(e => e.ErrorMessage);
+                _logger.LogError($"ModelState Errors: {string.Join(", ", errors)}");
+
+                return StatusCode(500, $"An error occurred while creating a team. Details: {ex.Message}");
             }
         }
     }
