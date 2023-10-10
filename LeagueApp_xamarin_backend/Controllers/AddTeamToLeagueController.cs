@@ -8,7 +8,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using System.IdentityModel.Tokens.Jwt;
 using Newtonsoft.Json;
-//
+
 namespace LeagueApp_xamarin_backend.Controllers
 {
     [ApiController]
@@ -26,48 +26,20 @@ namespace LeagueApp_xamarin_backend.Controllers
 
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> AddTeam([FromBody] Team model)
+        public IActionResult AddTeam()
         {
             try
-            {   /*
-                if (!ModelState.IsValid)
-                {
-                    var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage);
-                    return BadRequest(new { Message = "Invalid model state", Errors = errors });
-                }
-                */
+            {
                 var response = new ApiResponse();
 
-                var userIdString = User.FindFirstValue("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier");        
+                // Your original code to get user information
+                var userIdString = User.FindFirstValue("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier");
                 var username = User.FindFirstValue(JwtRegisteredClaimNames.UniqueName);
-                /*
-                if (!string.IsNullOrEmpty(userIdString) && int.TryParse(userIdString, out int userId))
-                {   
-                    // Create a new League object based on the input model
-                    var newTeam = new Team
-                    {
-                        TeamName = model.TeamName,
-                        LeagueId = model.LeagueId,
-                        Players = model.Players,
-                        TeamLeaderId = userId,
-                    };
-                    
 
-                    // Add the new team to the database
-                    _context.AddTeamToLeague(newTeam);
+                // Simplified response message
+                response.Message = "Add teams reached";
 
-                    // ...
-                    
-                    response.Message = $"team addition Successful. team Details: {JsonConvert.SerializeObject(userIdString)}";
-                }
-                else
-                {
-                    // Handle the case where userIdString is null or not a valid integer
-                    response.Message = $"Error: Invalid user ID. id: {userIdString}";
-                }  
-                */
                 // Return a success response
-                response.Message = $"team addition Successful. team Details: {JsonConvert.SerializeObject(userIdString)}";
                 return Ok(response);
             }
             catch (Exception ex)
