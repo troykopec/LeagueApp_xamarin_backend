@@ -6,7 +6,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using LeagueApp_xamarin_backend.Data;
-using LeagueApp_xamarin_backend.Helpers;
 using LeagueApp_xamarin_backend.Models;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -54,9 +53,6 @@ builder.Services.AddAuthentication(options =>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-// Register the UniqueCodeGenerator
-builder.Services.AddScoped<UniqueCodeGenerator>();
 
 var app = builder.Build();
 
