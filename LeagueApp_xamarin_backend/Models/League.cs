@@ -30,7 +30,6 @@ namespace LeagueApp_xamarin_backend.Models
         public int OrganizerId { get; set; }
         
         public List<Team> Teams { get; set; }
-        public string UniqueCode { get; set; }
 
         // Base constructor
         public League()
