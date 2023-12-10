@@ -55,7 +55,8 @@ namespace LeagueApp_xamarin_backend.Controllers
                         RegistrationStartDate = model.RegistrationStartDate,
                         RegistrationEndDate = model.RegistrationEndDate,
                         OrganizerId = userId,
-                        Teams = model.Teams
+                        Teams = model.Teams,
+                        UniqueCode = "HELLO"
                     };
 
                     // Add the new league to the database

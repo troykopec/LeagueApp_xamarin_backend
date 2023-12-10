@@ -17,6 +17,7 @@ namespace LeagueApp_xamarin_backend.Models
         public List<User> Players { get; set; }
         public User? TeamLeader { get; set; }
         public int TeamLeaderId { get; set; }
+        public string UniqueCode { get; set; }
 
         public Team()
         {
