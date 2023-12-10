@@ -3,6 +3,7 @@ using System;
 using System.Threading.Tasks;
 using LeagueApp_xamarin_backend.Data;
 using LeagueApp_xamarin_backend.Models;
+using LeagueApp_xamarin_backend.Helpers;
 using Microsoft.Extensions.Logging;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
@@ -17,11 +18,12 @@ namespace LeagueApp_xamarin_backend.Controllers
     {
         private readonly MyDbContext _context;
         private readonly ILogger<CreateLeagueController> _logger;
-
-        public CreateLeagueController(MyDbContext context, ILogger<CreateLeagueController> logger)
+        private readonly UniqueCodeGenerator _codeGenerator;
+        public CreateLeagueController(MyDbContext context, ILogger<CreateLeagueController> logger, UniqueCodeGenerator codeGenerator)
         {
             _context = context;
             _logger = logger;
+            _codeGenerator = codeGenerator;
         }
 
         [HttpPost]
@@ -41,6 +43,7 @@ namespace LeagueApp_xamarin_backend.Controllers
 
                 if (!string.IsNullOrEmpty(userIdString) && int.TryParse(userIdString, out int userId))
                 {
+                    var uniqueCode = _codeGenerator.GenerateUniqueCode(8);
                     // Create a new League object based on the input model
                     var newLeague = new League
                     {
@@ -56,7 +59,7 @@ namespace LeagueApp_xamarin_backend.Controllers
                         RegistrationEndDate = model.RegistrationEndDate,
                         OrganizerId = userId,
                         Teams = model.Teams,
-                        UniqueCode = "HELLO"
+                        UniqueCode = uniqueCode
                     };
 
                     // Add the new league to the database
