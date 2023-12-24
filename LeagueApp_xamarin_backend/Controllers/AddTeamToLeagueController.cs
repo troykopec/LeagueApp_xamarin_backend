@@ -57,6 +57,7 @@ namespace LeagueApp_xamarin_backend.Controllers
                         LeagueId = league.Id,
                         Players = model.Players,
                         TeamLeaderId = userId,
+                        UniqueCode = "test",
                     };
                     
 
