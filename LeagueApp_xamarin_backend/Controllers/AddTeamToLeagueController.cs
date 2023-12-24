@@ -44,10 +44,17 @@ namespace LeagueApp_xamarin_backend.Controllers
                 if (!string.IsNullOrEmpty(userIdString) && int.TryParse(userIdString, out int userId))
                 {   
                     // Create a new League object based on the input model
+                    string uniqueCode = model.UniqueCode;
+                    var league = _context.Leagues.FirstOrDefault(l => l.UniqueCode == uniqueCode);
+                    if (league == null)
+                    {
+                        return NotFound($"No league found with the unique code: {uniqueCode}");
+                    }
+
                     var newTeam = new Team
                     {
                         TeamName = model.TeamName,
-                        LeagueId = model.LeagueId,
+                        LeagueId = league.Id,
                         Players = model.Players,
                         TeamLeaderId = userId,
                     };
